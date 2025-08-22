@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Collaboration Center - PM Toolkit Hub</title>
+    <link rel="stylesheet" href="project-collaboration.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <button class="back-btn" onclick="window.location.href='pm-toolkit-hub.html'">
+                ← Back to Hub
+            </button>
+            <div class="header-content">
+                <h1>🤝 Project Collaboration Center</h1>
+                <p>Collaborate on artifacts, designs, and documents with your team</p>
+            </div>
+        </header>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <div class="action-cards">
+                <div class="action-card" onclick="createNewProject()">
+                    <div class="action-icon">➕</div>
+                    <h3>New Project</h3>
+                    <p>Start a new collaborative project workspace</p>
+                </div>
+                <div class="action-card" onclick="showJoinProject()">
+                    <div class="action-icon">🔗</div>
+                    <h3>Join Project</h3>
+                    <p>Join an existing project with invitation code</p>
+                </div>
+                <div class="action-card" onclick="showTemplates()">
+                    <div class="action-icon">📋</div>
+                    <h3>Project Templates</h3>
+                    <p>Start from pre-built project templates</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Projects -->
+        <section class="my-projects">
+            <div class="section-header">
+                <h2>My Projects</h2>
+                <div class="project-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                    <button class="filter-btn" data-filter="archived">Archived</button>
+                </div>
+            </div>
+            
+            <div class="projects-grid" id="projects-grid">
+                <!-- Sample Projects -->
+                <div class="project-card" data-status="active">
+                    <div class="project-header">
+                        <h3>Mobile App Redesign</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-description">Redesigning the mobile app user experience and interface</p>
+                    <div class="project-meta">
+                        <div class="collaborators">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <span class="more-count">+2</span>
+                        </div>
+                        <span class="last-updated">Updated 2 hours ago</span>
+                    </div>
+                    <div class="project-artifacts">
+                        <div class="artifact-count">
+                            <span class="artifact-icon">📄</span>
+                            <span>8 Documents</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">🎨</span>
+                            <span>12 Designs</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">💬</span>
+                            <span>24 Comments</span>
+                        </div>
+                    </div>
+                    <button class="project-button" onclick="openProject('mobile-redesign')">Open Project</button>
+                </div>
+
+                <div class="project-card" data-status="active">
+                    <div class="project-header">
+                        <h3>API Documentation v2.0</h3>
+                        <span class="project-status active">Active</span>
+                    </div>
+                    <p class="project-description">Comprehensive API documentation for the new platform version</p>
+                    <div class="project-meta">
+                        <div class="collaborators">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                        </div>
+                        <span class="last-updated">Updated yesterday</span>
+                    </div>
+                    <div class="project-artifacts">
+                        <div class="artifact-count">
+                            <span class="artifact-icon">📄</span>
+                            <span>15 Documents</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">🔧</span>
+                            <span>6 Specs</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">💬</span>
+                            <span>8 Comments</span>
+                        </div>
+                    </div>
+                    <button class="project-button" onclick="openProject('api-docs-v2')">Open Project</button>
+                </div>
+
+                <div class="project-card" data-status="completed">
+                    <div class="project-header">
+                        <h3>Q3 Product Strategy</h3>
+                        <span class="project-status completed">Completed</span>
+                    </div>
+                    <p class="project-description">Strategic planning and roadmap for Q3 product initiatives</p>
+                    <div class="project-meta">
+                        <div class="collaborators">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                            <img src="https://via.placeholder.com/24" alt="User" class="avatar">
+                        </div>
+                        <span class="last-updated">Completed 1 week ago</span>
+                    </div>
+                    <div class="project-artifacts">
+                        <div class="artifact-count">
+                            <span class="artifact-icon">📄</span>
+                            <span>22 Documents</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">📊</span>
+                            <span>5 Presentations</span>
+                        </div>
+                        <div class="artifact-count">
+                            <span class="artifact-icon">💬</span>
+                            <span>45 Comments</span>
+                        </div>
+                    </div>
+                    <button class="project-button" onclick="openProject('q3-strategy')">View Project</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Templates -->
+        <section class="templates-section" id="templates-section" style="display: none;">
+            <div class="section-header">
+                <h2>Project Templates</h2>
+                <p>Start your project with pre-built templates and best practices</p>
+            </div>
+            
+            <div class="templates-grid">
+                <div class="template-card">
+                    <div class="template-icon">📱</div>
+                    <h3>Mobile App Project</h3>
+                    <p>Complete template for mobile app development projects</p>
+                    <div class="template-includes">
+                        <span>• PRD Template</span>
+                        <span>• User Stories</span>
+                        <span>• Design System</span>
+                        <span>• Launch Plan</span>
+                    </div>
+                    <button class="template-button" onclick="useTemplate('mobile-app')">Use Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">🌐</div>
+                    <h3>Web Platform Project</h3>
+                    <p>Template for web platform and SaaS product development</p>
+                    <div class="template-includes">
+                        <span>• Technical Specs</span>
+                        <span>• API Documentation</span>
+                        <span>• User Journey Maps</span>
+                        <span>• Security Assessment</span>
+                    </div>
+                    <button class="template-button" onclick="useTemplate('web-platform')">Use Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">🚀</div>
+                    <h3>Product Launch Project</h3>
+                    <p>End-to-end template for product launch initiatives</p>
+                    <div class="template-includes">
+                        <span>• Go-to-Market Plan</span>
+                        <span>• Launch Checklist</span>
+                        <span>• Marketing Materials</span>
+                        <span>• Success Metrics</span>
+                    </div>
+                    <button class="template-button" onclick="useTemplate('product-launch')">Use Template</button>
+                </div>
+
+                <div class="template-card">
+                    <div class="template-icon">📊</div>
+                    <h3>Data & Analytics Project</h3>
+                    <p>Template for data-driven product initiatives</p>
+                    <div class="template-includes">
+                        <span>• Data Requirements</span>
+                        <span>• Analytics Framework</span>
+                        <span>• Dashboard Specs</span>
+                        <span>• KPI Definitions</span>
+                    </div>
+                    <button class="template-button" onclick="useTemplate('data-analytics')">Use Template</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Create Project Modal -->
+        <div id="create-project-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Create New Project</h2>
+                    <button class="close-btn" onclick="closeModal('create-project-modal')">&times;</button>
+                </div>
+                <form id="create-project-form">
+                    <div class="form-group">
+                        <label for="project-name">Project Name *</label>
+                        <input type="text" id="project-name" name="projectName" required placeholder="Enter project name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-description">Description</label>
+                        <textarea id="project-description" name="projectDescription" placeholder="Brief description of the project"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-type">Project Type</label>
+                        <select id="project-type" name="projectType">
+                            <option value="mobile-app">Mobile App</option>
+                            <option value="web-platform">Web Platform</option>
+                            <option value="product-launch">Product Launch</option>
+                            <option value="data-analytics">Data & Analytics</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="team-members">Team Members (Email addresses)</label>
+                        <textarea id="team-members" name="teamMembers" placeholder="Enter email addresses, separated by commas"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="closeModal('create-project-modal')" class="cancel-button">Cancel</button>
+                        <button type="submit" class="create-button">Create Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Join Project Modal -->
+        <div id="join-project-modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Join Project</h2>
+                    <button class="close-btn" onclick="closeModal('join-project-modal')">&times;</button>
+                </div>
+                <form id="join-project-form">
+                    <div class="form-group">
+                        <label for="invitation-code">Invitation Code</label>
+                        <input type="text" id="invitation-code" name="invitationCode" required placeholder="Enter invitation code">
+                        <small>Get this code from your project team lead</small>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" onclick="closeModal('join-project-modal')" class="cancel-button">Cancel</button>
+                        <button type="submit" class="join-button">Join Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="project-collaboration.js"></script>
+</body>
+</html>
